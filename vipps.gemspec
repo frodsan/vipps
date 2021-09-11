@@ -1,15 +1,15 @@
 require_relative "lib/vipps/version"
 
 Gem::Specification.new do |spec|
-  spec.name          = "vipps"
-  spec.version       = Vipps::VERSION
-  spec.authors       = ["Francesco Rodriguez"]
-  spec.email         = ["frodsan@me.com"]
+  spec.name = "vipps"
+  spec.version = Vipps::VERSION
+  spec.authors = ["Francesco Rodriguez"]
+  spec.email = ["frodsan@me.com"]
 
-  spec.summary       = "Ruby wrapper around the Vipps API"
-  spec.description   = spec.summary
-  spec.homepage      = "https://github.com/frodsan/vipps"
-  spec.license       = "MIT"
+  spec.summary = "Ruby wrapper around the Vipps API"
+  spec.description = spec.summary
+  spec.homepage = "https://github.com/frodsan/vipps"
+  spec.license = "MIT"
 
   spec.metadata["homepage_uri"] = spec.homepage
   spec.metadata["source_code_uri"] = spec.homepage
