@@ -1,9 +1,9 @@
 require_relative "test_helper"
 
 module Vipps
-  class ConfigTest < Minitest::Test
+  class ClientTest < Minitest::Test
     test "sets default endpoint" do
-      assert_equal "https://api.vipps.no", Config.new.api_endpoint
+      assert_equal "https://api.vipps.no/", Client.new.api_endpoint
     end
 
     test "raise error if config is not valid" do
@@ -15,14 +15,14 @@ module Vipps
       }
 
       options.each_key do |option|
-        config = Config.new(options)
+        config = Client.new(**options)
         assert_nothing_raised do
-          config.validate!
+          config.validate_options!
         end
 
-        assert_raise(Config::ConfigError) do
-          config.public_send(:"#{option}=", "")
-          config.validate!
+        assert_raise(Client::ConfigError) do
+          config.public_send(:"#{option}=", nil)
+          config.validate_options!
         end
       end
     end
