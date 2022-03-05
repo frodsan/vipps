@@ -1,3 +1,5 @@
 require "bundler/setup"
 require "minitest/autorun"
+require "minitest/candy"
+require "minitest/pride"
 require_relative "../lib/vipps"
