@@ -7,7 +7,7 @@ module Vipps
         connection.post("/accesstoken/get") do |req|
           req.headers["client_id"] = client_id
           req.headers["client_secret"] = client_secret
-          req.headers["Ocp-Apim-Subscription-Key"]
+          req.headers["Ocp-Apim-Subscription-Key"] = subscription_key
         end
       end
     end
