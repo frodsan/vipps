@@ -1,7 +1,16 @@
+# frozen_string_literal: true
+
+require_relative "client/authentication"
+
 module Vipps
   class Client
-    API_ENDPOINT = "https://api.vipps.no/".freeze
-    USER_AGENT = "Vipps Ruby Gem #{Vipps::VERSION}".freeze
+    include Authentication
+
+    # Default API endpoint
+    API_ENDPOINT = "https://api.vipps.no/"
+
+    # Default User-Agent header string
+    USER_AGENT = "Vipps Ruby Gem #{Vipps::VERSION}"
 
     attr_reader :api_endpoint
     attr_accessor :client_id
@@ -68,7 +77,7 @@ module Vipps
       ping&.success?
     end
 
-    def ping
+    def ping # :nodoc:
       connection.get("/mobileintercept/")
     end
   end
