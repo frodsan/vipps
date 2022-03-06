@@ -2,6 +2,7 @@ require:
   - standard
   - rubocop-minitest
   - rubocop-packaging
+  - rubocop-rake
 
 inherit_gem:
   standard: config/base.yml
