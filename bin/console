@@ -5,6 +5,14 @@ require "vipps"
 
 # You can add fixtures and/or initialization code here to make experimenting
 # with your gem easier. You can also use a different console, if you like.
+require "dotenv/load"
+
+Vipps.configure do |c|
+  c.api_endpoint = ENV["VIPPS_API_ENDPOINT"]
+  c.client_id = ENV["VIPPS_CLIENT_ID"]
+  c.client_secret = ENV["VIPPS_CLIENT_SECRET"]
+  c.subscription_key = ENV["VIPPS_SUBSCRIPTION_KEY"]
+end
 
 # (If you use this, don't forget to add pry to your Gemfile!)
 # require "pry"
