@@ -12,5 +12,5 @@ AllCops:
   DisabledByDefault: true
   SuggestExtensions: false
   Exclude:
-    - '**/tmp/**/*'
-    - '**/vendor/**/*'
+    - "**/tmp/**/*"
+    - "**/vendor/**/*"
