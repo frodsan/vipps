@@ -28,8 +28,8 @@ module Vipps
       end
     end
 
-    def respond_to_missing?(method, *_, &_)
-      client.respond_to?(method)
+    def respond_to_missing?(method, *)
+      client.respond_to?(method) || super
     end
   end
 end
