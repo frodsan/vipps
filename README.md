@@ -1,9 +1,9 @@
 # Vipps
 
+Ruby wrapper for the Vipps API.
+
 ![ci](https://github.com/frodsan/vipps/actions/workflows/ci.yml/badge.svg)
 ![sec](https://github.com/frodsan/vipps/actions/workflows/sec.yml/badge.svg)
-
-Ruby wrapper for the Vipps API.
 
 ## Installation
 
