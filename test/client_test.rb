@@ -2,6 +2,14 @@ require_relative "test_helper"
 
 module Vipps
   class ClientTest < Minitest::Test
+    attr_reader :client
+
+    setup do
+      @client = Vipps::Client.new(
+        api_endpoint: "https://apitest.vipps.no"
+      )
+    end
+
     test "sets default endpoint" do
       assert_equal "https://api.vipps.no/", Client.new.api_endpoint
     end
@@ -25,6 +33,10 @@ module Vipps
           config.validate_options!
         end
       end
+    end
+
+    test "server can be pinged" do
+      assert client.ping?
     end
   end
 end
