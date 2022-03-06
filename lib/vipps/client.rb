@@ -10,13 +10,10 @@ module Vipps
     # Default API endpoint
     API_ENDPOINT = "https://api.vipps.no/"
 
-    # Default API endpoint for test environment
-    API_ENDPOINT_TEST = "https://apitest.vipps.no/"
-
     # Default User-Agent header string
     USER_AGENT = "Vipps Ruby Gem #{Vipps::VERSION}"
 
-    attr_reader :api_endpoint
+    attr_accessor :api_endpoint
     attr_accessor :client_id
     attr_accessor :client_secret
     attr_accessor :subscription_key
@@ -27,38 +24,24 @@ module Vipps
       client_id: nil,
       client_secret: nil,
       subscription_key: nil,
-      user_agent: nil,
-      strict_config: true
+      user_agent: nil
     )
       self.api_endpoint = api_endpoint || API_ENDPOINT
       self.client_id = client_id
       self.client_secret = client_secret
       self.subscription_key = subscription_key
       self.user_agent = user_agent || USER_AGENT
-      validate_config if strict_config
     end
 
-    def api_endpoint=(url)
-      @api_endpoint = url && File.join(url, "")
+    def ping?
+      ping&.success?
     end
 
-    def validate_config
-      if api_endpoint.nil? || api_endpoint.empty?
-        raise ConfigError.new("api_endpoint config is missing")
-      end
-
-      if client_id.nil? || client_id.empty?
-        raise ConfigError.new("client_id config is missing")
-      end
-
-      if client_secret.nil? || client_secret.empty?
-        raise ConfigError.new("client_secret config is missing")
-      end
-
-      if subscription_key.nil? || subscription_key.empty?
-        raise ConfigError.new("subscription_key config is missing")
-      end
+    def ping # :nodoc:
+      connection.get("/mobileintercept/")
     end
+
+    private
 
     def connection
       @connection ||= Faraday.new(connection_options) do |f|
@@ -74,14 +57,6 @@ module Vipps
           user_agent: user_agent
         }
       }
-    end
-
-    def ping?
-      ping&.success?
-    end
-
-    def ping # :nodoc:
-      connection.get("/mobileintercept/")
     end
   end
 end

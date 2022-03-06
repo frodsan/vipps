@@ -8,13 +8,11 @@ require_relative "vipps/client"
 module Vipps
   class << self
     def client
-      @client ||= Vipps::Client.new(strict_config: false)
+      @client ||= Vipps::Client.new
     end
 
     def configure
-      reset!
       yield client
-      client.validate_config
     end
 
     def reset! # :nodoc:
