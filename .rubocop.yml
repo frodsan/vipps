@@ -1,0 +1,10 @@
+require:
+  - standard
+  - rubocop-minitest
+  - rubocop-packaging
+
+inherit_gem:
+  standard: config/base.yml
+
+AllCops:
+  TargetRubyVersion: 3.1
