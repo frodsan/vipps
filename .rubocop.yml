@@ -8,5 +8,8 @@ inherit_gem:
   standard: config/base.yml
 
 AllCops:
-  NewCops: enable
   TargetRubyVersion: 3.1
+  SuggestExtensions: false
+  Exclude:
+    - '**/tmp/**/*'
+    - '**/vendor/**/*'
