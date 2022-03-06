@@ -1,4 +1,7 @@
-# Vipps ![CI](https://github.com/frodsan/vipps/actions/workflows/ci.yml/badge.svg)
+# Vipps
+
+![ci](https://github.com/frodsan/vipps/actions/workflows/ci.yml/badge.svg)
+![sec](https://github.com/frodsan/vipps/actions/workflows/sec.yml/badge.svg)
 
 Ruby wrapper for the Vipps API.
 
