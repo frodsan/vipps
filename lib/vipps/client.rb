@@ -24,20 +24,19 @@ module Vipps
       client_id: nil,
       client_secret: nil,
       subscription_key: nil,
-      user_agent: USER_AGENT
+      user_agent: USER_AGENT,
+      strict_config: true
     )
       self.api_endpoint = api_endpoint
       self.client_id = client_id
       self.client_secret = client_secret
       self.subscription_key = subscription_key
       self.user_agent = user_agent
+      validate_options! if strict_config
     end
 
     def api_endpoint=(url)
       @api_endpoint = url && File.join(url, "")
-    end
-
-    class ConfigError < StandardError
     end
 
     def validate_options!

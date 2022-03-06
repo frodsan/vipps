@@ -2,16 +2,19 @@
 
 require "faraday"
 require_relative "vipps/version"
+require_relative "vipps/errors"
 require_relative "vipps/client"
 
 module Vipps
   class << self
     def client
-      @client ||= Vipps::Client.new
+      @client ||= Vipps::Client.new(strict_config: false)
     end
 
     def configure
+      reset!
       yield client
+      client.validate_options!
     end
 
     def reset! # :nodoc:
