@@ -14,7 +14,7 @@ module Vipps
     def configure
       reset!
       yield client
-      client.validate_options!
+      client.validate_config
     end
 
     def reset! # :nodoc:

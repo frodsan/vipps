@@ -15,8 +15,8 @@ module Vipps
         end
       end
 
-      def self.attribute(name, cast: nil)
-        name = name.to_s
+      def self.attribute(method_name, cast: nil)
+        name = method_name.to_s
 
         if cast
           cast = TypeCasting.from(cast) || cast

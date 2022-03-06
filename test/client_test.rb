@@ -28,7 +28,7 @@ module Vipps
 
         assert_raise(ConfigError) do
           client.public_send(:"#{option}=", nil)
-          client.validate_options!
+          client.validate_config
         end
       end
     end

@@ -32,14 +32,14 @@ module Vipps
       self.client_secret = client_secret
       self.subscription_key = subscription_key
       self.user_agent = user_agent
-      validate_options! if strict_config
+      validate_config if strict_config
     end
 
     def api_endpoint=(url)
       @api_endpoint = url && File.join(url, "")
     end
 
-    def validate_options!
+    def validate_config
       if api_endpoint.nil? || api_endpoint.empty?
         raise ConfigError.new("api_endpoint config is missing")
       end
