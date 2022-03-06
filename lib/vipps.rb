@@ -2,6 +2,7 @@
 
 require "faraday"
 require_relative "vipps/version"
+require_relative "vipps/default"
 require_relative "vipps/errors"
 require_relative "vipps/client"
 

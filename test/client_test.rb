@@ -2,12 +2,8 @@
 
 require_relative "test_helper"
 
-
 class ClientTest < Minitest::Test
-  test "sets defaults" do
-    client = Vipps::Client.new
-
-    assert_equal Vipps::Client::API_ENDPOINT, client.api_endpoint
-    assert_equal Vipps::Client::USER_AGENT, client.user_agent
+  test "use default api endpoint" do
+    assert_equal Vipps::Default.api_endpoint, Vipps::Client.new.api_endpoint
   end
 end

@@ -7,12 +7,6 @@ module Vipps
   class Client
     include Authentication
 
-    # Default API endpoint
-    API_ENDPOINT = "https://api.vipps.no/"
-
-    # Default User-Agent header string
-    USER_AGENT = "Vipps Ruby Gem #{Vipps::VERSION}"
-
     attr_accessor :api_endpoint
     attr_accessor :client_id
     attr_accessor :client_secret
@@ -20,17 +14,17 @@ module Vipps
     attr_accessor :user_agent
 
     def initialize(
-      api_endpoint: nil,
-      client_id: nil,
-      client_secret: nil,
-      subscription_key: nil,
-      user_agent: nil
+      api_endpoint: Default.api_endpoint,
+      client_id: Default.client_id,
+      client_secret: Default.client_secret,
+      subscription_key: Default.subscription_key,
+      user_agent: Default.user_agent
     )
-      self.api_endpoint = api_endpoint || API_ENDPOINT
+      self.api_endpoint = api_endpoint
       self.client_id = client_id
       self.client_secret = client_secret
       self.subscription_key = subscription_key
-      self.user_agent = user_agent || USER_AGENT
+      self.user_agent = user_agent
     end
 
     def ping?
