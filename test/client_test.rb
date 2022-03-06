@@ -6,7 +6,7 @@ module Vipps
 
     setup do
       @options = {
-        api_endpoint: "https://apitest.vipps.no",
+        api_endpoint: Client::API_ENDPOINT_TEST,
         client_id: "client_id",
         client_secret: "client_secret",
         subscription_key: "subscription_key"

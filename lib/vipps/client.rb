@@ -10,6 +10,9 @@ module Vipps
     # Default API endpoint
     API_ENDPOINT = "https://api.vipps.no/"
 
+    # Default API endpoint for test environment
+    API_ENDPOINT_TEST = "https://apitest.vipps.no/"
+
     # Default User-Agent header string
     USER_AGENT = "Vipps Ruby Gem #{Vipps::VERSION}"
 
@@ -20,18 +23,18 @@ module Vipps
     attr_accessor :user_agent
 
     def initialize(
-      api_endpoint: API_ENDPOINT,
+      api_endpoint: nil,
       client_id: nil,
       client_secret: nil,
       subscription_key: nil,
-      user_agent: USER_AGENT,
+      user_agent: nil,
       strict_config: true
     )
-      self.api_endpoint = api_endpoint
+      self.api_endpoint = api_endpoint || API_ENDPOINT
       self.client_id = client_id
       self.client_secret = client_secret
       self.subscription_key = subscription_key
-      self.user_agent = user_agent
+      self.user_agent = user_agent || USER_AGENT
       validate_config if strict_config
     end
 
