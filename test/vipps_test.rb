@@ -16,7 +16,7 @@ class VippsTest < Minitest::Test
 
   test "configure raises error if config is missing" do
     assert_raise(Vipps::ConfigError) do
-      Vipps.configure { }
+      Vipps.configure {}
     end
   end
 
