@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require_relative "client/resource"
 require_relative "client/authentication"
 
 module Vipps
