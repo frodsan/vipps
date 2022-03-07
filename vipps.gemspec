@@ -4,7 +4,7 @@ Gem::Specification.new do |spec|
   spec.name = "vipps"
   spec.version = Vipps::VERSION
   spec.authors = ["Francesco Rodriguez"]
-  spec.email = ["frodsan@me.com"]
+  spec.email = ["frodsan@hey.com"]
 
   spec.summary = "Ruby wrapper around the Vipps API"
   spec.description = spec.summary
