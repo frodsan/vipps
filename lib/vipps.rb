@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 require "faraday"
-require_relative "vipps/version"
-require_relative "vipps/default"
-require_relative "vipps/errors"
-require_relative "vipps/client"
+require "vipps/version"
+require "vipps/default"
+require "vipps/errors"
+require "vipps/client"
 
 module Vipps
   class << self

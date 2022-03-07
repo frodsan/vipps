@@ -2,10 +2,10 @@
 
 module Vipps
   module Default
-    # Default API endpoint
+    # Default API endpoint.
     API_ENDPOINT = "https://api.vipps.no/"
 
-    # Default User-Agent header string
+    # Default User-Agent header string.
     USER_AGENT = "Vipps Ruby Gem #{Vipps::VERSION}"
 
     class << self

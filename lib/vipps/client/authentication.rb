@@ -8,7 +8,7 @@ module Vipps
         AccessToken.new(res.body)
       end
 
-      private def fetch_access_token
+      def fetch_access_token
         connection.post("/accesstoken/get") do |req|
           req.headers["client_id"] = client_id
           req.headers["client_secret"] = client_secret

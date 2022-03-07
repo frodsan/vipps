@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
-require_relative "client/resource"
-require_relative "client/authentication"
+require "vipps/response/raise_error"
+require "vipps/client/resource"
+require "vipps/client/authentication"
 
 module Vipps
   class Client
@@ -41,6 +42,7 @@ module Vipps
       @connection ||= Faraday.new(connection_options) do |f|
         f.request :json
         f.response :json
+        f.use Response::RaiseError
       end
     end
 
