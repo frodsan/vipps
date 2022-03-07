@@ -1,8 +1,13 @@
 # frozen_string_literal: true
 
 module Vipps
+  # Custom error class for rescuing from all Vipps errors.
   class Error < StandardError
     class << self
+      # Returns the appropriate Vipps::Error subclass based on the response status.
+      #
+      # @param [Hash] response HTTP response
+      # @return [Vipps::Error]
       def from_response(response)
         klass = case response[:status].to_i
           when 400 then BadRequest
@@ -27,20 +32,27 @@ module Vipps
       end
     end
 
-    attr_reader :response
-
-    def initialize(response)
+    def initialize(response) # :nodoc:
       @response = response
     end
 
+    # Status code returned by the Vipps server.
+    #
+    # @return [Integer]
     def response_status
       @response[:status]
     end
 
+    # Headers returned by the Vipps server.
+    #
+    # @return [Hash]
     def response_headers
       @response[:response_headers]
     end
 
+    # Body returned by the Vipps server.
+    #
+    # @return [String]
     def response_body
       @response[:body]
     end
