@@ -32,7 +32,8 @@ module Vipps
       end
     end
 
-    def initialize(response) # :nodoc:
+    # @api private
+    def initialize(response)
       @response = response
     end
 
