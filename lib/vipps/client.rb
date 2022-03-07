@@ -32,7 +32,7 @@ module Vipps
       ping&.success?
     end
 
-    def ping # :nodoc:
+    def ping
       connection.get("/mobileintercept/")
     end
 

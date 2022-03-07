@@ -16,7 +16,8 @@ module Vipps
       yield client
     end
 
-    def reset! # :nodoc:
+    # @api private
+    def reset!
       @client = nil
     end
 
