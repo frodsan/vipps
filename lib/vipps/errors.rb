@@ -32,8 +32,7 @@ module Vipps
       end
     end
 
-    # @api private
-    def initialize(response)
+    protected def initialize(response)
       @response = response
     end
 
