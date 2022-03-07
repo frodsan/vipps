@@ -2,9 +2,9 @@
 
 Ruby wrapper for the Vipps API.
 
-![ci](https://github.com/frodsan/vipps/actions/workflows/ci.yml/badge.svg)
-![sec](https://github.com/frodsan/vipps/actions/workflows/sec.yml/badge.svg)
-![docs](http://img.shields.io/badge/yard-docs-blue.svg)](https://rubydoc.info/github/frodsan/vipps/main)
+![[ci](https://github.com/frodsan/vipps/actions/workflows/ci.yml)](https://github.com/frodsan/vipps/actions/workflows/ci.yml/badge.svg)
+![[sec](https://github.com/frodsan/vipps/actions/workflows/sec.yml)](https://github.com/frodsan/vipps/actions/workflows/sec.yml/badge.svg)
+![[docs](http://img.shields.io/badge/yard-docs-blue.svg)]](https://rubydoc.info/github/frodsan/vipps/main)
 
 ## Installation
 
