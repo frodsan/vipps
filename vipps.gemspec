@@ -6,7 +6,7 @@ Gem::Specification.new do |spec|
   spec.authors = ["Francesco Rodriguez"]
   spec.email = ["frodsan@hey.com"]
 
-  spec.summary = "Ruby wrapper around the Vipps API"
+  spec.summary = "Ruby wrapper for the Vipps API"
   spec.description = spec.summary
   spec.homepage = "https://github.com/frodsan/vipps"
   spec.license = "MIT"
