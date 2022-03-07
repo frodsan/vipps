@@ -32,6 +32,18 @@ module Vipps
     def initialize(response)
       @response = response
     end
+
+    def response_status
+      @response[:status]
+    end
+
+    def response_headers
+      @response[:response_headers]
+    end
+
+    def response_body
+      @response[:body]
+    end
   end
 
   # Raised on errors in the 400-499 range.
