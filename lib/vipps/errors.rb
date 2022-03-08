@@ -89,7 +89,7 @@ module Vipps
     def build_error_message
       return nil if @env.nil?
 
-      # GET https://api.vipps.no: 401
+      # GET https://api.vipps.no/: 401
       format(
         "%<method>s %<url>s: %<status>d",
         method: request_method.upcase,
