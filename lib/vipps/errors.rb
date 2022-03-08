@@ -6,10 +6,10 @@ module Vipps
     class << self
       # Returns the appropriate Vipps::Error subclass based on the response status.
       #
-      # @param [Hash] response HTTP response
+      # @param [Faraday::Env] env HTTP request environment
       # @return [Vipps::Error]
-      def from_response(response)
-        klass = case response[:status].to_i
+      def from_response(env)
+        case env.status
           when 400 then BadRequest
           when 401 then Unauthorized
           when 403 then Forbidden
@@ -26,35 +26,76 @@ module Vipps
           when 502 then BadGateway
           when 503 then ServiceUnavailable
           when 500..599 then ServerError
-        end
-
-        klass&.new(response)
+        end&.new(env)
       end
     end
 
-    protected def initialize(response)
-      @response = response
+    protected def initialize(env)
+      @env = env
+      super(build_error_message)
+    end
+
+    # HTTP method of the request sent.
+    #
+    # @return [Symbol]
+    def request_method
+      @env.method
+    end
+
+    # URL of the request sent.
+    #
+    # @return [URI::HTTPS]
+    def request_url
+      @env.url
+    end
+
+    # Included HTTP headers in the request sent.
+    #
+    # @return [Hash]
+    def request_headers
+      @env.request_headers
+    end
+
+    # Body of the request sent.
+    #
+    # @return [String]
+    def request_body
+      @env.request_body
     end
 
     # Status code returned by the Vipps server.
     #
     # @return [Integer]
     def response_status
-      @response[:status]
+      @env.status
     end
 
     # Headers returned by the Vipps server.
     #
     # @return [Hash]
     def response_headers
-      @response[:response_headers]
+      @env.response_headers
     end
 
     # Body returned by the Vipps server.
     #
     # @return [String]
     def response_body
-      @response[:body]
+      @env.response_body
+    end
+
+    private
+
+    def build_error_message
+      return nil if @env.nil?
+
+      # GET https://api.vipps.no: 401
+      format(
+        "%<method>s %<url>s: %<status>d",
+        method: request_method.upcase,
+        url: request_url,
+        status: response_status
+      )
     end
   end
 

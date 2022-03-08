@@ -2,6 +2,7 @@ source "https://rubygems.org"
 
 gemspec
 
+gem "debug", "~> 1.4"
 gem "dotenv", "~> 2.7"
 gem "minitest", "~> 5.15"
 gem "minitest-candy", "~> 1.0"
