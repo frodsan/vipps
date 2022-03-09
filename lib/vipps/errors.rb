@@ -35,6 +35,16 @@ module Vipps
       super(build_error_message)
     end
 
+    private def build_error_message
+      # GET https://api.vipps.no/: 401
+      format(
+        "%<method>s %<url>s: %<status>d",
+        method: request_method.upcase,
+        url: request_url,
+        status: response_status
+      )
+    end
+
     # HTTP method of the request sent.
     #
     # @return [Symbol]
@@ -84,18 +94,25 @@ module Vipps
       @env.response_body
     end
 
+    # Decoded version of response body. If response content type is JSON,
+    # it returns a Hash. Otherwise, returns #response_body.
+    #
+    # @return [Hash, String]
+    def response_data
+      @data ||= decode_response_data
+    end
+
     private
 
-    def build_error_message
-      return nil if @env.nil?
+    def decode_response_data
+      body = response_body
+      return nil unless body && !body.empty?
+      return body unless body.is_a?(String) && response_is_json?
+      JSON.parse(body)
+    end
 
-      # GET https://api.vipps.no/: 401
-      format(
-        "%<method>s %<url>s: %<status>d",
-        method: request_method.upcase,
-        url: request_url,
-        status: response_status
-      )
+    def response_is_json?
+      /json/ === response_headers&.[](:content_type)
     end
   end
 
